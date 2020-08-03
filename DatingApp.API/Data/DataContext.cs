@@ -8,8 +8,9 @@ namespace DatingApp.API.Data
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) {}
 
-        // It is conventional to pluralize the name of entities like here we pluralize value as values
+        // It is convention to pluralize the name of entities like here we pluralize value as values
         public DbSet<Value> Values {get; set;}
+        public DbSet<User> Users {get; set;}
 
     }
 }
