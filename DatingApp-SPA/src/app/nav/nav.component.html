@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">My App</a>
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Matches</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Messages</a>
+    </li>
+    <li class="nav-item">
+      <a *ngIf="loggedIn()" (click)="logout()" class="nav-link" href="#">Logout</a>
+    </li>
+  </ul>
+
+  <!-- ngIf is a structural directive and a structural directive always has * -->
+  <div *ngIf="loggedIn()" class="dropdown">
+    <a class="dropdown-toggle text-light">
+      Welcome {{ model.username }}
+    </a>
+    
+    <div class="dropdown-menu">
+      <a href="#" class="dropdown-item"><i class="fa fa-user"></i> Edit Profile</a>
+      <div class="dropdown-divider"></div>
+      <a href="#" class="dropdown-item"><i class="fa fa-sign-out"></i> Logout</a>
+    </div>
+  </div>
+
+  <form *ngIf="!loggedIn()" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+    <input class="form-control mr-sm-2" type="text" name="username" placeholder="Username" #username="ngModel" required [(ngModel)]="model.username">
+    <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password" #password="ngModel" required [(ngModel)]="model.password">
+    <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+  </form>
+</nav>
+
+<!-- These are the types of form validations in angular -->
+<!--
+<Pre>
+  Form Valid: {{loginForm.valid}} <br />
+  Form Touched: {{loginForm.touched}} <br />
+  Form Dirty: {{loginForm.dirty}} <br />
+  Form Value: {{loginForm.value | json}} <br />
+  Username Valid: {{username.valid}} <br />
+  Username Touched: {{username.touched}} <br />
+  Username Dirty: {{username.dirty}} <br />
+  Username Value: {{username.value | json}} <br />
+  Password Valid: {{password.valid}} <br />
+  Password Dirty: {{password.dirty}} <br />
+  Password Touched: {{password.touched}} <br />
+  Password Value: {{password.value | json}} <br />
+</Pre>
+-->

@@ -27,6 +27,7 @@ namespace DatingApp.API.Controllers
         }
 
         //https://localhost:5000/values
+        [AllowAnonymous]  // We assigned this just for example
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
